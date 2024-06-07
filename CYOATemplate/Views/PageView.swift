@@ -50,7 +50,7 @@ struct PageView: View {
                                 )
                             )
                         )
-                            .font(.title2)
+                        .font(.title2)
                         
                         if let image = page.image {
                             

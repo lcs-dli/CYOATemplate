@@ -13,6 +13,7 @@ struct Reader: Identifiable, Codable {
     var name: String?
     var prefersDarkMode: Bool
     var lastPageReadId: Int?
+    var virtualBucksBalance: Int = 500
 
     // When decoding and encoding from JSON, translate snake_case
     // column names into camelCase
@@ -21,6 +22,7 @@ struct Reader: Identifiable, Codable {
         case name
         case prefersDarkMode = "prefers_dark_mode"
         case lastPageReadId = "last_page_read_id"
+        case virtualBucksBalance = "virtual_bucks_balance"
     }
     
 }
