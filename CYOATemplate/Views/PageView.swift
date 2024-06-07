@@ -34,16 +34,18 @@ struct PageView: View {
                     // DEBUG
                     let _ = print("Text for this page is:\n\n\(page.narrative)\n\n")
                     let _ = print("Image for this page is:\n\n\(page.image ?? "(no image for this page)")\n\n")
-
-                    Text(
-                        try! AttributedString(
-                            markdown: page.narrative,
-                            options: AttributedString.MarkdownParsingOptions(
-                                interpretedSyntax: .inlineOnlyPreservingWhitespace
+ 
+                        Text(
+                            try! AttributedString(
+                                markdown: page.narrative,
+                                options: AttributedString.MarkdownParsingOptions(
+                                    interpretedSyntax: .inlineOnlyPreservingWhitespace
+                                )
                             )
                         )
-                    )
                         .font(.title2)
+                        
+                    
                     
                     if let image = page.image {
                         

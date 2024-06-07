@@ -36,7 +36,14 @@ struct BookView: View {
                         Text("\(book.currentPageId!)")
                             .font(.largeTitle)
                         Spacer()
-                    }
+                        //VBUCKS DISPLAY
+                        Image("vbuck")
+                            .frame(width: 25, height: 25)
+                            .padding(20)
+                        Text("\(book.reader.virtualBucksBalance)")
+                            .padding()
+                            .font(.title)
+                                }
                     .padding()
                     
                     PageView(
@@ -88,7 +95,7 @@ struct BookView: View {
             // Respond when app is backgrounded, foregrounded, or made inactive
             .onChange(of: scenePhase) {
                 if scenePhase == .inactive {
-                    print("Active")
+                    print("Inactive")
                     Task {
                         try await book.saveState()
                         print("Reader's state for this book has been restored.")
