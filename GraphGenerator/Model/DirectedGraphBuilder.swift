@@ -17,8 +17,8 @@ struct DirectedGraphBuilder {
 
         // Attempt to open the database
         // TODO: 1 - Replace details of this instance of StoryInformation with data for your own group's story
-        let storyInfo = StoryInformation(title: "Journey Under The Sea",
-                                         authorOrAuthors: "R.A. Montgomery",
+        let storyInfo = StoryInformation(title: "Adventure in the city-forest",
+                                         authorOrAuthors: "David, Tom, Justin",
                                          seriesInfo: "CHOOSE YOUR OWN ADVENTURE #2",
                                          publisherInfo: "Chooseco LLC, Waitsfield, Vermont, 2006")
         
