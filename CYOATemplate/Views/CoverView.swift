@@ -25,7 +25,7 @@ struct CoverView: View {
             } else {
                 
                 // Show the cover
-                Text("Adventure in the city-forest")
+                Text("Journey Under the Sea")
                     .font(.largeTitle)
                 
                 Button {
