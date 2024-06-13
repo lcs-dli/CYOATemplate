@@ -14,6 +14,9 @@ struct SettingsView: View {
     // Whether this view is showing in the sheet right now
     @Binding var showing: Bool
     
+    @State var backgroundColor: String = "white"
+    
+    let colorList: [String] = ["white", "blue", "yellow", "gray"]
     // Access the book state through the environment
     @Environment(BookStore.self) var book
     
@@ -37,6 +40,21 @@ struct SettingsView: View {
                 }
                 
                 Spacer()
+                
+                Picker("Choose the background color", selection: $backgroundColor){
+                    ForEach(0..<4){ index in
+                        HStack{
+                            Text(colorList[index])
+                            Circle()
+                                .foregroundColor(stringtoColor(s: colorList[index]))
+                        }
+                        
+                        
+                    }
+                    .onChange(of: backgroundColor){
+                        
+                    }
+                }
             }
             .padding()
             .navigationTitle("Statistics")
@@ -59,6 +77,22 @@ struct SettingsView: View {
         // Dark / light mode toggle
         .preferredColorScheme(book.reader.prefersDarkMode ? .dark : .light)
 
+    }
+    
+    //MARK: Function
+    func stringtoColor(s: String) -> Color {
+        switch s{
+        case "white":
+            return .white
+        case "blue":
+            return .blue
+        case "yellow":
+            return .yellow
+        default:
+            return .gray
+        }
+    
+        
     }
 }
 

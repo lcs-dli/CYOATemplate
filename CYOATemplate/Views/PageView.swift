@@ -23,7 +23,7 @@ struct PageView: View {
     let viewModel: PageViewModel
     
     //Add color changer
-    var backgroundColor : Color = .blue
+    @State var backgroundColor : Color
     
     // MARK: Computed properties
     var body: some View {
