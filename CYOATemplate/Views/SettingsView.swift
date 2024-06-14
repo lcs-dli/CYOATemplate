@@ -14,9 +14,10 @@ struct SettingsView: View {
     // Whether this view is showing in the sheet right now
     @Binding var showing: Bool
     
-    @State var backgroundColor: String = "white"
+    @Binding var backgroundColor: Color
     
     let colorList: [String] = ["white", "blue", "yellow", "gray"]
+    let color: [Color] = [.white, .blue, .yellow, .gray]
     // Access the book state through the environment
     @Environment(BookStore.self) var book
     
@@ -97,5 +98,5 @@ struct SettingsView: View {
 }
 
 #Preview {
-    SettingsView(showing: Binding.constant(true))
+    SettingsView(showing: Binding.constant(true), backgroundColor: Binding.constant(.white))
 }

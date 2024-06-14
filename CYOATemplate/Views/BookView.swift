@@ -21,6 +21,9 @@ struct BookView: View {
     // Whether the settings view is being shown right now
     @State private var showingSettingsView = false
     
+    // Changing Background Color
+    @State var backgroundColor : Color = .white
+    
     // Track when app is foregrounded, backgrounded, or made inactive
     @Environment(\.scenePhase) var scenePhase
 
@@ -47,7 +50,7 @@ struct BookView: View {
                     .padding()
                     
                     PageView(
-                        viewModel: PageViewModel(book: book)
+                        viewModel: PageViewModel(book: book), backgroundColor: backgroundColor
                     )
                     
                 } else {
@@ -88,7 +91,7 @@ struct BookView: View {
             }
             // Show the settings view
             .sheet(isPresented: $showingSettingsView) {
-                SettingsView(showing: $showingSettingsView)
+                SettingsView(showing: $showingSettingsView, backgroundColor: $backgroundColor)
                     // Make the book state accessible to SettingsView
                     .environment(book)
             }
