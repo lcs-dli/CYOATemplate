@@ -40,7 +40,7 @@ struct SettingsView: View {
                     }
                 }
                 
-                Spacer()
+                
                 
                 Picker("Choose the background color", selection: $backgroundColor){
                     ForEach(0..<4){ index in
@@ -49,6 +49,9 @@ struct SettingsView: View {
                     }
                     
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                
+                Spacer()
             }
             .padding()
             .navigationTitle("Statistics")
