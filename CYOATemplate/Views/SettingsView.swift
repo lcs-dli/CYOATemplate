@@ -44,17 +44,10 @@ struct SettingsView: View {
                 
                 Picker("Choose the background color", selection: $backgroundColor){
                     ForEach(0..<4){ index in
-                        HStack{
-                            Text(colorList[index])
-                            Circle()
-                                .foregroundColor(stringtoColor(s: colorList[index]))
-                        }
-                        
-                        
+                        Text(colorList[index])
+                            .tag(color[index])
                     }
-                    .onChange(of: backgroundColor){
-                        
-                    }
+                    
                 }
             }
             .padding()
