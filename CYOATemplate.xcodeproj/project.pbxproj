@@ -19,6 +19,7 @@
 		494C7CE62C0E23EB0048CEA9 /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = 494C7CE52C0E23EB0048CEA9 /* Realtime */; };
 		494C7CE82C0E23EB0048CEA9 /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = 494C7CE72C0E23EB0048CEA9 /* Storage */; };
 		494C7CEA2C0E23EB0048CEA9 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 494C7CE92C0E23EB0048CEA9 /* Supabase */; };
+		49EC17312C1BBA45003DBC2E /* ColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EC17302C1BBA45003DBC2E /* ColorViewModel.swift */; };
 		8123CD292A34F99E00F9DF1C /* StoryInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123CD282A34F99E00F9DF1C /* StoryInformation.swift */; };
 		8123CD2B2A34F9C100F9DF1C /* SharedFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123CD2A2A34F9C100F9DF1C /* SharedFunctions.swift */; };
 		8123CD2D2A34FE4800F9DF1C /* DirectedGraphBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8123CD2C2A34FE4800F9DF1C /* DirectedGraphBuilder.swift */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49EC17302C1BBA45003DBC2E /* ColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewModel.swift; sourceTree = "<group>"; };
 		8123CD162A34CF7B00F9DF1C /* GraphGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = GraphGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
 		8123CD282A34F99E00F9DF1C /* StoryInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryInformation.swift; sourceTree = "<group>"; };
 		8123CD2A2A34F9C100F9DF1C /* SharedFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctions.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				812F512E2C0CDC3300C1A270 /* BookStore.swift */,
 				812F513E2C0DC6F800C1A270 /* PageViewModel.swift */,
 				812F51402C0DC94200C1A270 /* EdgesViewModel.swift */,
+				49EC17302C1BBA45003DBC2E /* ColorViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			files = (
 				81C198BB2A251B1B0047A4B3 /* Page.swift in Sources */,
 				81C198B92A251AE00047A4B3 /* BookView.swift in Sources */,
+				49EC17312C1BBA45003DBC2E /* ColorViewModel.swift in Sources */,
 				81C198BD2A251B2B0047A4B3 /* Edge.swift in Sources */,
 				812F51052C0C9FAD00C1A270 /* Supabase.swift in Sources */,
 				812F51462C0DE6FE00C1A270 /* Enumerations.swift in Sources */,

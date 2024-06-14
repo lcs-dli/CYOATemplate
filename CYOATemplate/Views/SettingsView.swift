@@ -14,6 +14,10 @@ struct SettingsView: View {
     // Whether this view is showing in the sheet right now
     @Binding var showing: Bool
     
+    @Binding var backgroundColor: Color
+    
+    let colorList: [String] = ["white", "blue", "yellow", "gray"]
+    let color: [Color] = [.white, .blue, .yellow, .gray]
     // Access the book state through the environment
     @Environment(BookStore.self) var book
     
@@ -35,6 +39,17 @@ struct SettingsView: View {
                         Image(systemName: "moonphase.first.quarter")
                     }
                 }
+                
+                
+                
+                Picker("Choose the background color", selection: $backgroundColor){
+                    ForEach(0..<4){ index in
+                        Text(colorList[index])
+                            .tag(color[index])
+                    }
+                    
+                }
+                .pickerStyle(SegmentedPickerStyle())
                 
                 Spacer()
             }
@@ -60,8 +75,24 @@ struct SettingsView: View {
         .preferredColorScheme(book.reader.prefersDarkMode ? .dark : .light)
 
     }
+    
+    //MARK: Function
+    func stringtoColor(s: String) -> Color {
+        switch s{
+        case "white":
+            return .white
+        case "blue":
+            return .blue
+        case "yellow":
+            return .yellow
+        default:
+            return .gray
+        }
+    
+        
+    }
 }
 
 #Preview {
-    SettingsView(showing: Binding.constant(true))
+    SettingsView(showing: Binding.constant(true), backgroundColor: Binding.constant(.white))
 }
