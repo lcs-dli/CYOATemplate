@@ -27,7 +27,10 @@ struct EdgesView: View {
     
     // Whether the quiz question was answered correctly
     @State private var quizResult: QuizResult = .quizNotActive
-
+    
+  //  @State var isTapped: Bool
+    
+   // @State var promptColor: Color
     // MARK: Computed properties
     var body: some View {
         
@@ -50,23 +53,13 @@ struct EdgesView: View {
                     }
 
                 } else {
-                    
                     // Show the edges for this page
                     ForEach(edges) { edge in
-                        HStack {
-                            Spacer()
-                            Text(
-                                try! AttributedString(
-                                    markdown: edge.prompt,
-                                    options: AttributedString.MarkdownParsingOptions(
-                                        interpretedSyntax: .inlineOnlyPreservingWhitespace
-                                    )
-                                )
-                            )
-                                .multilineTextAlignment(.trailing)
-                        }
+                        EdgesChoiceView(prompt: edge.prompt, toPage: edge.toPage)
                         .onTapGesture {
                             
+                        
+                          
                             // DEBUG
                             print("Current page number is: \(book.currentPageId!)")
                             print("==== about to change page ====")
@@ -79,7 +72,9 @@ struct EdgesView: View {
                                 } else {
                                     
                                     // Question answered correctly, allow reader to move on
-                                    book.read(edge.toPage)
+                                    Task {
+                                        await book.read(edge.toPage)
+                                    }
 
                                 }
                                 
@@ -87,7 +82,9 @@ struct EdgesView: View {
 
                                 // Move to page edge connects to
                                 // (No prompt for quiz on pages that have multiple options)
-                                book.read(edge.toPage)
+                                Task {
+                                    await book.read(edge.toPage)
+                                }
 
                             }
                             
@@ -119,7 +116,7 @@ struct EdgesView: View {
 }
 
 #Preview {
-    EdgesView(
-        viewModel: EdgesViewModel(book: BookStore())
+    EdgesView(viewModel: EdgesViewModel(book: BookStore())
+        
     )
 }

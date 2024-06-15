@@ -36,7 +36,6 @@ class BookStore: Observable {
     
     // Is the book being read at the moment?
     var isBeingRead: Bool {
-        
         // Returns true when a page is being read, otherwise false
         return self.currentPageId != nil
     }
@@ -68,7 +67,7 @@ class BookStore: Observable {
         }
         
     }
-    
+        
     // MARK: Initializer(s)
     init() {
         self.reader = Reader(prefersDarkMode: false)
@@ -157,8 +156,20 @@ class BookStore: Observable {
     }
     
     // Advance to the provided page id
-    func read(_ pageId: Int) {
+    func read(_ pageId: Int) async {
         self.currentPageId = pageId
+        
+        // Insert a row in reader_page to track what page has been read
+        let readerPage = ReaderPage(id: reader.id!, pageId: pageId)
+        do{
+            try await supabase
+              .from("reader_page")
+              .insert(readerPage)
+              .execute()
+        }catch{
+            print("Error")
+        }
+        
     }
     
     // Return the details of the current page
@@ -227,6 +238,37 @@ class BookStore: Observable {
             debugPrint(error)
             
             return nil
+        }
+        
+    }
+    
+    // Check whether a given page has been read before
+    func hasPageBeenReadBefore(pageId: Int) async throws -> Bool {
+        
+        // nil because we do not know if they have read the page or not
+        var returnReaderPage: ReaderPage? = nil
+        
+        //ask about how to see if the result is an empty row or not and to return whether the page has been read true if it's not
+        do {
+            let result: ReaderPage = try await supabase
+              .from("reader_page")
+              .select()
+              .eq("page_id", value: pageId)
+              .single()
+              .execute()
+              .value
+            
+            returnReaderPage = result
+        } catch {
+            print("Error")
+            return false
+        }
+        
+        // tell the caller of this function whether the page has been read or not
+        if returnReaderPage == nil {
+            return false
+        } else {
+            return true
         }
         
     }
