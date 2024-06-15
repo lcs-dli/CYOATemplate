@@ -8,11 +8,40 @@
 import SwiftUI
 
 struct EdgesChoiceView: View {
+    
+    
+    // MARK: Stored properties
+    let prompt: String
+    let toPage: Int
+    
+    // Access the book state through the environment
+    @Environment(BookStore.self) var book
+    
+    @State private var pageThisEdgeLeadsToHasBeenReadBefore = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Spacer()
+            Text(
+                try! AttributedString(
+                    markdown: prompt,
+                    options: AttributedString.MarkdownParsingOptions(
+                        interpretedSyntax: .inlineOnlyPreservingWhitespace
+                    )
+                )
+            )
+            .multilineTextAlignment(.trailing)
+            .foregroundColor(pageThisEdgeLeadsToHasBeenReadBefore ? Color.gray : Color.black)
+        }
+        .task {
+            Task {
+                pageThisEdgeLeadsToHasBeenReadBefore = try await book.hasPageBeenReadBefore(pageId: toPage)
+            }
+        }
     }
 }
 
 #Preview {
-    EdgesChoiceView()
+    EdgesChoiceView(prompt: "Go to the next page", toPage: 1)
+        .environment(BookStore())
 }

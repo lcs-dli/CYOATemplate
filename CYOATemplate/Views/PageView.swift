@@ -1,4 +1,4 @@
-//
+// Copy and p//
 //  PageView.swift
 //  CYOATemplate
 //
@@ -77,9 +77,8 @@ struct PageView: View {
                         } else {
                             
                             // Page is not an ending, so show available edges
-                            EdgesView(
-                                viewModel: EdgesViewModel(book: book)
-                            )
+                            EdgesView(viewModel: EdgesViewModel(book: book))
+
                             
                         }
                         
